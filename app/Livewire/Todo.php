@@ -15,6 +15,8 @@ class Todo extends Component
     #[Rule("required|string|max:100")]
     public $name;
 
+    public $search;
+
     public function create(){
         $validated = $this->validateOnly("name");
 
@@ -26,7 +28,9 @@ class Todo extends Component
 
     public function render()
     {
-        $todos = TodoModel::orderBy("created_at", "desc")->paginate(5);
+        // $todos = TodoModel::latest()->where("name", "like", '%' . $this->search . '%')->paginate(5);
+        $todos = TodoModel::orderBy("created_at", "desc")->where("name", "like", "%" . $this->search . "%")->paginate(5);
+
         return view('livewire.todo', ["todos" => $todos]);
     }
 }
