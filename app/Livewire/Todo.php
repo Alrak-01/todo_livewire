@@ -5,9 +5,13 @@ namespace App\Livewire;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use App\Models\Todo as TodoModel;
+use Livewire\WithPagination;
 
 class Todo extends Component
 {   
+    
+    use WithPagination;
+
     #[Rule("required|string|max:100")]
     public $name;
 
@@ -22,6 +26,7 @@ class Todo extends Component
 
     public function render()
     {
-        return view('livewire.todo');
+        $todos = TodoModel::orderBy("created_at", "desc")->paginate(5);
+        return view('livewire.todo', ["todos" => $todos]);
     }
 }
