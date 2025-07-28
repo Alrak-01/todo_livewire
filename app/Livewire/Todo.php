@@ -26,6 +26,11 @@ class Todo extends Component
 
     }
 
+    public function destroy($todoId){
+        $todo = TodoModel::findOrFail($todoId);
+        $todo->delete();
+    }
+
     public function render()
     {
         // $todos = TodoModel::latest()->where("name", "like", '%' . $this->search . '%')->paginate(5);
