@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use App\Models\Todo as TodoModel;
+use Exception;
 use Livewire\WithPagination;
 
 class Todo extends Component
@@ -60,7 +61,12 @@ class Todo extends Component
     }
 
     public function destroy($todoId){
-        $todo = TodoModel::findOrFail($todoId);
+        try {
+            $todo = TodoModel::findOrFail($todoId);
+
+        } catch (Exception $e) {
+            session()->flash("error", "Todo not found");
+        }
         $todo->delete();
     }
 
