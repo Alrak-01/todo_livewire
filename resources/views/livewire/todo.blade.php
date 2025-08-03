@@ -15,9 +15,9 @@
         </div>
     </div>
     <div id="content" class="mx-auto" style="max-width:500px;">
-    @if(session['error'])
-        <h2 class="text-red-600">{{session['error']}}</h2>
-    @endif
+    {{-- @if(session['error']) --}}
+        {{-- <h2 class="text-red-600">{{session['error']}}</h2> --}}
+    {{-- @endif --}}
     {{-- CREATE TODO IS ADDED HERE --}}
         @include('includes.create')
         {{-- SEARCH TODO STARTS --}}
