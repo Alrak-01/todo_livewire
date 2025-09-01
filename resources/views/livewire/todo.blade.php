@@ -15,15 +15,11 @@
         </div>
     </div>
     <div id="content" class="mx-auto" style="max-width:500px;">
-    {{-- @if(session['error']) --}}
-        {{-- <h2 class="text-red-600">{{session['error']}}</h2> --}}
-    {{-- @endif --}}
     {{-- CREATE TODO IS ADDED HERE --}}
         @include('includes.create')
         {{-- SEARCH TODO STARTS --}}
         @include('includes.search')
         {{-- SEARCH TODO ENDS --}}
-
         {{-- DISPLAY TODO STARTS --}}
         <div id="todos-list">
            @include('includes.todo-card')
@@ -33,6 +29,5 @@
             </div>
         </div>
         {{-- DISPLAY TODO STARTS --}}
-
     </div>
 </div>

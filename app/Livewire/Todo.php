@@ -23,7 +23,7 @@ class Todo extends Component
     #[Rule("required|string|max:100")]
     public $editNewName;
 
-   
+    
 
     public function create(){
         $validated = $this->validateOnly("name");
